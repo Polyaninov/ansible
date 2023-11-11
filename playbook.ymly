@@ -1,0 +1,39 @@
+---
+- name: My playbook for lesson
+  hosts: all
+  become: yes
+
+  vars:
+    message1: Privet
+    message2: World
+    secret:   1234567
+
+  tasks:
+
+  - name: Print secret varible
+    debug:
+      var: secret
+
+
+  - name: Vivesti secretnoe slovo
+    debug:
+      msg: "Secretnoe slovo: {{ secret }}"
+
+  - name: Vladelec servera
+    debug:
+      msg: "Vladelec etogo servera -->{{ owner }}<--"
+
+  - set_fact: full_massage="{{ message1 }} {{ message2 }} from {{ owner }}"
+
+  - name: vivesti peremenie
+    debug:
+      var: full_massage
+
+  - name: Name server
+    debug:
+      var: ansible_distribution
+
+
+  - name: Peremenay
+    debug:
+      var: ansible_userspace_architecture

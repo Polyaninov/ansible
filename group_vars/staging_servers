@@ -1,0 +1,4 @@
+---
+ansible_user            : pmn1
+ansible_ssh_private_key : /home/pmn/.ssh/linux.pub
+

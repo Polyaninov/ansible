@@ -1,0 +1,9 @@
+---
+
+ansible_user            : pmn2
+ansible_ssh_private_key : /home/pmn/.ssh/linux2.pub
+enviroment              : PRODUCTION
+owner                   : Maksim
+
+
+
