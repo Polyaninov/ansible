@@ -1,10 +1,10 @@
 
 [Centos_servers]
-Centos_linux  ansible_host=158.160.107.151 
+Centos_linux  ansible_host=68.84.124.176 
 
 
 [Ubuntu_servers]
-Ubuntu_linux2  ansible_host=158.160.121.191 
+Ubuntu_linux2  ansible_host=62.84.114.157 
 
 
 
