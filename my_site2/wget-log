@@ -1,0 +1,13 @@
+Will not apply HSTS. The HSTS database must be a regular and non-world-writable file.
+ERROR: could not open HSTS store at '/home/pmn/.wget-hsts'. HSTS will be disabled.
+--2023-11-18 15:14:14--  https://img.freepik.com/free-vector/png-cartoon-globe-vintage-sticker_53876-127373.jpg?w=740
+Resolving img.freepik.com (img.freepik.com)... 23.35.105.163, 23.35.105.152, 2a02:26f0:7700::1723:69a3, ...
+Connecting to img.freepik.com (img.freepik.com)|23.35.105.163|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 124104 (121K) [image/jpeg]
+Saving to: ‘png-cartoon-globe-vintage-sticker_53876-127373.jpg?w=740’
+
+            png-cartoon   0%[                              ]       0  --.-KB/s               png-cartoon-globe-vinta 100%[=============================>] 121,20K   711KB/s    in 0,2s    
+
+2023-11-18 15:14:14 (711 KB/s) - ‘png-cartoon-globe-vintage-sticker_53876-127373.jpg?w=740’ saved [124104/124104]
+

@@ -1,0 +1,54 @@
+---
+- name: Install web servers
+  hosts: all
+  become: yes
+
+  vars:
+    source_folder: ./my_site2
+    destin_folder: /var/www/html
+
+
+  tasks:
+  - name: Print Linux version
+    debug: var=ansible_os_family
+
+  - block: #    Block for Redhat, for Centos 
+
+      - name: Install apache web server for Redhat
+        yum: name=httpd  state=latest
+
+      - name: Start web server  for Redhat
+        service: name=httpd state=started enabled=yes
+
+    when: ansible_os_family == "Redhat"
+
+  -  block: # Block for Debian, for Ubuntu 
+
+       - name: Install apache web server for Debian
+         apt: name=apache2 state=latest
+
+       - name: Start web server for Debian
+         service: name=apache2 state=started enabled=yes
+
+     when: ansible_os_family == "Debian"
+
+
+  - name: Copy homepage file to web srever
+    copy: src={{ source_folder }}/{{ item }} dest={{ destin_folder }} mode=0555
+    loop:
+      - "zemlya"
+      - "index.html"
+
+    notify:
+      -  Restart Apache Redhat
+      -  Restart Apache Debian
+
+
+  handlers:
+   - name: Restart apache Redhat
+     service: name=apache2 state=restarted
+     when: ansible_os_family == "Redhat"
+
+   - name: Restart Apache Debian
+     service: name=apache2 state=restarted
+     when: ansible_os_family == "Debian"
