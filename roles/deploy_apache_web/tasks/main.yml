@@ -1,0 +1,36 @@
+---
+# tasks file for deploy_apache_web
+- block:      #    Block for Redhat, for Centos 
+
+    - name: Install apache web server for Redhat
+      yum: name=httpd  state=latest
+
+    - name: Start web server  for Redhat
+      service: name=httpd state=started enabled=yes
+
+  when: ansible_os_family == "Redhat"
+
+- block: # Block for Debian, for Ubuntu 
+
+    - name: Install apache web server for Debian
+      apt: name=apache2 state=latest
+
+    - name: Start web server for Debian
+      service: name=apache2 state=started enabled=yes
+
+  when: ansible_os_family == "Debian"
+
+- name: Ganeret index.html file
+  template: src=index.j2 dest={{ destin_folder }} mode=0555
+  notify:
+    - Restart Apache Redhat
+    - Restart Apache Debian
+
+- name: Copy homepage file to web srever
+  copy: src={{ item }} dest={{ destin_folder }} mode=0555
+  loop:
+    - "zemlya"
+
+  notify:
+    - Restart Apache Redhat
+    - Restart Apache Debian
