@@ -1,0 +1,14 @@
+---
+
+- name: My playbook includes
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Ping my servers
+    ping:
+
+
+  - name: Greate folders
+    include_tasks: greate_foldes.yml
+

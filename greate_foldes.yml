@@ -1,0 +1,13 @@
+---
+- name: Greate folder
+  file:
+    path: /home/folde1
+    state: directory
+    mode: 0777
+
+- name: Greate folder2
+  file:
+    path: /home/folde2
+    state: directory
+    mode: 0777
+

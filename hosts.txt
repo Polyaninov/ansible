@@ -1,10 +1,14 @@
 
 [Centos_servers]
-Centos_linux  ansible_host=62.84.126.198 owner=Maks 
+Centos_linux  ansible_host=84.201.129.143 owner=Maks 
 
 
 [Ubuntu_servers]
-Ubuntu_linux2  ansible_host=62.84.124.214 owner=Ira
+Ubuntu_linux2  ansible_host=51.250.6.165 owner=Ira
+
+[ALL_LINUX:children]
+Centos_servers
+Ubuntu_servers
 
 
 
