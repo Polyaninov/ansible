@@ -4,8 +4,8 @@
   become: yes
 
   vars:
-    source_folder: ./my_site2
-    destin_folder: /var/www/html
+    source_file: ./my_site/index.html
+    destin_file: /var/www/html
 
 
   tasks:
@@ -17,6 +17,10 @@
       - name: Install apache web server for Redhat
         yum: name=httpd  state=latest
 
+      - name: Copy homepage file to web srever
+        copy: src={{ source_file }} dest={{ destin_file }} mode=0555
+        notify: Restart Apache Redhat
+
       - name: Start web server  for Redhat
         service: name=httpd state=started enabled=yes
 
@@ -27,28 +31,20 @@
        - name: Install apache web server for Debian
          apt: name=apache2 state=latest
 
+       - name: Copy homepage file to web srever
+         copy: src={{ source_file }} dest={{ destin_file }} mode=0777
+         notify: Restart Apache Debian
+
        - name: Start web server for Debian
          service: name=apache2 state=started enabled=yes
 
      when: ansible_os_family == "Debian"
 
-
-  - name: Copy homepage file to web srever
-    copy: src={{ source_folder }}/{{ item }} dest={{ destin_folder }} mode=0555
-    loop:
-      - "zemlya"
-      - "index.html"
-
-    notify:
-      -  Restart Apache Redhat
-      -  Restart Apache Debian
-
-
   handlers:
    - name: Restart apache Redhat
-     service: name=apache2 state=restarted
-     when: ansible_os_family == "Redhat"
+     service: name=httpd state=restarted
 
    - name: Restart Apache Debian
      service: name=apache2 state=restarted
-     when: ansible_os_family == "Debian"
+
+

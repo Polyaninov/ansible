@@ -1,6 +1,6 @@
 ---
 - name: Install Apache Web  server
-  hosts: all
+  hosts: Ubuntu_servers
   become: yes
 
   tasks:

@@ -1,5 +1,6 @@
 ---
 # tasks file for deploy_apache_web
+
 - block:      #    Block for Redhat, for Centos 
 
     - name: Install apache web server for Redhat
@@ -20,7 +21,7 @@
 
   when: ansible_os_family == "Debian"
 
-- name: Ganeret index.html file
+- name: Ganeret index.j2 file
   template: src=index.j2 dest={{ destin_folder }} mode=0555
   notify:
     - Restart Apache Redhat

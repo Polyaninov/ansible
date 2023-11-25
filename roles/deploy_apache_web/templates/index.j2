@@ -11,12 +11,10 @@
   <p>Второй абзац.</p>
 
 
-server host: {{ ansible_hostname }}<br>
-
-server famile: {{ ansible_os_family }} <br>
-
-Ip address: {{ ansible_default_ipv4.address }} <br>
-
+<font color="green">This user: {{ owner }}<br>
+server host : {{ "ansible_hostname" }}<br>
+server family : {{ "ansible_os_family" }} <br>
+Ip address : {{ "ansible_default_ipv4.address" }}<br>
 
  </body>
 </html>

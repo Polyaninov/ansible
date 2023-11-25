@@ -5,5 +5,5 @@
 
   tasks:
 
-  - name: Ping my srvers
+  - name: Ping my servers ubuntu, Centos
     ping:

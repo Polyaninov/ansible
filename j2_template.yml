@@ -51,9 +51,9 @@
 
   handlers:
   - name: Restart apache Redhat
-     service: name=apache2 state=restarted
-     when: ansible_os_family == "Redhat"
+    service: name=httpd state=restarted
+    when: ansible_os_family == "Redhat"
 
   - name: Restart Apache Debian
-     service: name=apache2 state=restarted
-     when: ansible_os_family == "Debian"
+    service: name=apache2 state=restarted
+    when: ansible_os_family == "Debian"
